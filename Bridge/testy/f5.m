@@ -1,0 +1,1 @@
+function f5()	for i=1:9		disp('i am free walking here:')		disp(pwd)		disp(i)		pause(1);	endfor	disp('the end')endfunction

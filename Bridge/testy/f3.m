@@ -1,0 +1,1 @@
+function z = f3()	disp('i am "f3.m"')  z = randi([1,9]);  disp(['f3:returning output(z) random=',num2str(z)]);endfunction

@@ -1,0 +1,1 @@
+function z = f4 (a,b,c)	disp('i am "f4.m"')  z = a+b+c;  disp(['f4:returning output(z) SUM=',num2str(z)]);endfunction

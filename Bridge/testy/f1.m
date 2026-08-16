@@ -1,0 +1,1 @@
+function f1()	disp('i am "f1.m"')	argv()  disp('f1: free run with no output');	disp('goodbye :)')endfunction

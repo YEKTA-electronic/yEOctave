@@ -1,0 +1,1 @@
+#!% test fast direct cmd runnerfid = popen ("ls -ltr / | tail -3", "r");while (ischar (s = fgets (fid)))  fputs (stdout, s);endwhilepclose(fid);
