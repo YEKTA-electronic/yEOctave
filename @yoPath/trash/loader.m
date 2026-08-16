@@ -1,11 +1,10 @@
-function yoLoader(rootPath)
+function loader(obj)
 	% first add all my own helpers
 	yeOctaveDir = fileparts(__FILE__);
-	yoPathDir = [yeOctaveDir,'\@yoPath'];
-	addpath(yoPathDir);
+
 	% use the class PATH HELPER
 	pObj = yoPath(yeOctaveDir);
-	pObj.dirExc = {'trash','arx','ignore','hid','.git'};
+	
 	pObj = pObj.search();% find all the existing and Excluding folders
 	pObj.addPath();
 endfunction
