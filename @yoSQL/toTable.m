@@ -21,7 +21,7 @@ function retVal = toTable(obj,forcedTypes)
 	tSize = [tHeight , tWidth];
 	% CREATE an empty table
 	t = table('Size',tSize,'VariableTypes',colTypes,'VariableNames',colNames);
-keyboard
+
 	problems = 0;% counting conversion missings
 	for iCol=1:1:tWidth
 		% fetch all the column as a vector Cell
