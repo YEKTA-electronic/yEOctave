@@ -1,4 +1,5 @@
-
+% remove some paths (fit the pattern) from all the availables
+% returns the remained path list
 function pathList = filter (obj)
 
 	% delete the excludeds
