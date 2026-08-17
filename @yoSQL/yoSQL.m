@@ -1,28 +1,24 @@
 classdef yoSQL
+
 		properties (SetAccess = private)
 			link;
+			path;
 			tik;
+			mode = false;
 		endproperties
-    properties (SetAccess = public)
-			path
-			mode
-    end
-    methods
+
+		methods
 			% constructor ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-			function obj = yoSQL(mode,path)
+			function obj = yoSQL(dbFile)
 				if nargin==0
 					disp('PARENTING | new child born')
 				else
-					obj.mode = mode;
-					if nargin > 1
-						obj.path = path;
-					elseif strcmp(mode,'create')
-						obj.path = ['database_yosql_',int2str(time()),'.db'];
-					end
-					obj = obj.connect();
+					obj.path = dbFile;
 				endif
 			endfunction
+
     endmethods
+
 endclassdef
 
 
