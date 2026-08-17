@@ -19,7 +19,9 @@ function result = exe(obj, stmt)
 		endif
 
 	catch
-		disp(lasterror)
+		beep
+		result = false;
+		warning(lasterror)
 	end_try_catch
 
 	% report
