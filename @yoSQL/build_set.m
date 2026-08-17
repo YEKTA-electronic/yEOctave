@@ -8,6 +8,15 @@ function retStr = build_set(obj)
 			colValue = obj.scalar2str(obj.setPair{i,2});
 			setStr(i) = sprintf('%s=%s', colName, colValue);
 		endfor%i
+
+	elseif isstruct(obj.setPair)
+		colName = fieldnames(obj.setPair);
+
+		for i=1:numfields(obj.setPair)
+			colValue = obj.setPair.(colName{i});
+			colValue = obj.scalar2str(colValue);
+			setStr(i) = sprintf('%s=%s', colName{i}, colValue);
+		endfor
 	else
 		error('wrong input')
 	endif
