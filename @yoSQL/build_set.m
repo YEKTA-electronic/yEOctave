@@ -9,7 +9,7 @@ function retStr = build_set(obj)
 			colName = obj.setPair{i,1};
 			colValue = obj.scalar2str(obj.setPair{i,2});
 			setStr(i) = sprintf('%s=%s', colName, colValue);
-		endfor%i
+		endfor
 
 	%% STRUCT ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	elseif isstruct(obj.setPair)
