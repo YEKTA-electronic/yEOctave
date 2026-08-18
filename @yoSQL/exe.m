@@ -12,10 +12,13 @@ function result = exe(obj, stmt)
 	try
 		t = tic;
 		% needs pkg sqlite
-		if nargout>0
+		if isa(stmt,'yoSQLselect')
 			result = fetch (obj.link, query);
-		else
+		elseif any(isa( stmt, {'yoSQLinsert','yoSQLupdate','yoSQLdelete'} ))
 			execute(obj.link, query)
+			result = true;
+		else
+			error('DB EXE | wrong input arg')
 		endif
 
 	catch
