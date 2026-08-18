@@ -1,24 +1,19 @@
 classdef yoSQLupdate < yoSQL
   properties
-    query;% fill for direct usage
+    query=char();% fill for direct usage
 
-		table={};% FROM
+		table=char();
 		setPair;
-		from;
 		where;% unConditioned
-
-		order;% not sorted
-    limit = int64(0);% ALL as default
-    offset = int64(0);% from begining
 
   endproperties
 
   methods
 
     % constructor ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-    function obj = yoSQLupdate(from)
+    function obj = yoSQLupdate(tableName)
 			if nargin>0
-				obj.table = strtrim(from);
+				obj.table = strtrim(tableName);
 			endif
     endfunction
 

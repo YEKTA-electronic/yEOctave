@@ -4,7 +4,6 @@ function retString = build (obj)
 	updateStr = ['UPDATE ',obj.table];
 	setStr 		= obj.build_set;
 	whereStr 	= obj.build_where;
-	orderStr 	= obj.build_order;
 	% concatenator :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	retString = strjoin( {updateStr,setStr,whereStr,orderStr} ,' ');
+	retString = strjoin( {updateStr,setStr,whereStr} ,' ');
 endfunction
