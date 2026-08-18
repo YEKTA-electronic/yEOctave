@@ -19,7 +19,7 @@ function obj = connect(obj, mode)
 				warning(['connecting failed | ',lasterr])
 			end_try_catch
 
-		case {0,'off','disconnect'}
+		case {0,'off','disconnect','close'}
 			if isempty(obj.link)
 				disp('No connection to close')
 			elseif isopen(obj.link)

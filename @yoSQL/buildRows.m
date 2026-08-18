@@ -1,10 +1,10 @@
 % convert any kind of input date into formated string
 function s = buildRows (obj,x)
 
-	rowStrings = cell();% clean sheet
 	if iscell(x)
 		iRows = rows(x);
 		jCols = min(columns(x),length(obj.cols));
+		rowStrings = cell();% clean sheet
 		for i=1:iRows % each row...
 			rowValues = cell();
 			for j=1:jCols % then each column element
