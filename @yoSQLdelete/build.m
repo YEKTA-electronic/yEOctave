@@ -1,12 +1,11 @@
 % convert fields into string
 function retString = build (obj)
 	% DELETE :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	if ischar(obj.table)
-		delStr = ['DELETE FROM ',strtrim(obj.table)];
+	if ischar(obj.from)
+		delStr = ['DELETE FROM ',strtrim(obj.from)];
 	else
 		error('bad FROM TABLE for DELETE object')
 	endif
-
 
 	% SELECT :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	if isempty(obj.select)

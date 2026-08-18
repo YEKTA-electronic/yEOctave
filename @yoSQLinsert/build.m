@@ -6,7 +6,7 @@ function retString = build (obj)
 	else
 		insertStr = 'INSERT INTO ';
 	endif
-	insertStr = [insertStr,obj.table];
+	insertStr = [insertStr,obj.into];
 
 	% VALUES :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	if obj.default || isempty(obj.values)

@@ -1,7 +1,7 @@
 classdef yoSQLinsert < yoSQL
 	properties
 		query;
-		table;% target
+		into;% target
 		default = logical(0);
 		replace = logical(0);
 		cols;
@@ -9,8 +9,8 @@ classdef yoSQLinsert < yoSQL
 	endproperties
 	%% METHODs :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	methods
-		function obj = yoSQLinsert(into)
-			obj.table = into;
+		function obj = yoSQLinsert(tableName)
+			obj.into = tableName;
 		endfunction
 	endmethods
 endclassdef
