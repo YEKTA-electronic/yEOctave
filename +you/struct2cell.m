@@ -1,4 +1,4 @@
-function y = struct2cell(obj,x,fieldFilter)
+function y = struct2cell(x,fieldFilter)
 	% each struct is a row and each field is a column
 	y = cell();% clean sheet
 
