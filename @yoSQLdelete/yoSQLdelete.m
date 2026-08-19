@@ -1,7 +1,7 @@
 classdef yoSQLdelete < yoSQL
 	properties
 		query;
-		table;
+		from;
 		where;
 		select;
 		limit=0;
@@ -9,8 +9,8 @@ classdef yoSQLdelete < yoSQL
 	endproperties
 	%% METHODs :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	methods
-		function obj = yoSQLdelete(from)
-			obj.table = from;
+		function obj = yoSQLdelete(tableName)
+			obj.from = tableName;
 		endfunction
 	endmethods
 endclassdef
