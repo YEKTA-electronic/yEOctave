@@ -27,20 +27,25 @@ function retVal = toTable(obj,forcedTypes)
 		% fetch all the column as a vector Cell
 		colData = data{:,iCol};
 
-		for j=1:1:tHeight
+		for jRow=1:1:tHeight
 			try
-				value = colData{j};
-				value = obj.typeConverter(value,colTypes{iCol});
-				t(j,iCol) = value;
+				value = colData{jRow};
+				value = you.typeConverter(value,colTypes{iCol});
+				if !isempty(value)
+					t(jRow,iCol) = value;
+				end
+
 			catch
 				problems++;
-				disp('the original value:')
-				disp(colData{j})
-				disp('is inserted as : ')
-				disp(t(j,iCol))
-				warning(['toTABLE converter | PROBLEM #',int2str(problems),' @ (',int2str(j),',',int2str(iCol),')'])
+				disp(sprintf("toTABLE converter | PROBLEM #%d on (%d, %2d):",problems,jRow,iCol))
+				disp(lasterr)
+				disp(['original value of type [',class(value),'] was:'])
+				disp(value)
+				disp('inserted as :')
+				disp(t{jRow,iCol})
+
 			end_try_catch
-		endfor% j
+		endfor% jRow
 
 	endfor% i
 	% send back the TABLE
