@@ -11,7 +11,7 @@ function retVal = toTable(obj,forcedTypes)
 	% fetch from "dbtable" object
 	colNames = string(obj.result.Properties.VariableNames);
 	colTypes = postpad(colTypes, length(colNames), '?');% fix the length
-	colTypes = obj.typeTranslator(colTypes);
+	colTypes = you.typeTranslate(colTypes);
 
 	data = obj.result{:};
 

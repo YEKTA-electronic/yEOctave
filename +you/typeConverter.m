@@ -1,4 +1,4 @@
-function y = typeConverter (obj, x, outputDataType)
+function y = typeConverter (x, outputDataType)
 	switch (outputDataType)
 		case 'string'
 			if isempty(x)

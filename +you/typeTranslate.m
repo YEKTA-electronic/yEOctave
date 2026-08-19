@@ -1,4 +1,4 @@
-function y = typeTranslator(obj,varTypeChars)
+function y = typeTranslate(varTypeChars)
 
 	y = cell();% clean sheet
 

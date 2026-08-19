@@ -1,7 +1,5 @@
 % convert any kind of input date into formated string
-function s = buildRows (obj,x)
-
-	you = yoUtils();% utils object
+function s = build_rows (obj,x)
 
 	if iscell(x)
 		iRows = rows(x);
@@ -22,7 +20,7 @@ function s = buildRows (obj,x)
 	elseif isstruct(x)
 
 		newCell = you.struct2cell (x,obj.cols);
-		s = obj.buildRows(newCell);% RECURSIVE call
+		s = obj.build_rows(newCell);% RECURSIVE call
 
 	else
 		error('INSERT | wrong input VALUE(s)')

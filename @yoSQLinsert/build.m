@@ -18,7 +18,7 @@ function retString = build (obj)
 			valStr = ['("',obj.values,'")'];
 	else
 			% needs conversion...
-			valStr = obj.buildRows (obj.values);
+			valStr = obj.build_rows (obj.values);
 	endif
 	valStr = ['VALUES ',valStr];% helper
 

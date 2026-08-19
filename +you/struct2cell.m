@@ -1,12 +1,12 @@
 function y = struct2cell(x,fieldFilter)
-	% each struct is a row and each field is a column
+	% each struct(in array mode) is a row and each field is a column
 	y = cell();% clean sheet
 
 	if !isstruct(x)
 		error('not struct input')
 	elseif isempty(x)
 		return;% no error no effort
-	elseif nargin<3
+	elseif nargin<2
 		fieldFilter = fieldnames(x);% no filter defined
 	elseif !iscell(fieldFilter)
 		error('wrong filter input')

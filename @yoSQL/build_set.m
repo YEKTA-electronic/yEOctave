@@ -1,6 +1,5 @@
 function retStr = build_set(obj)
 % convert the property to pairs of "name1=value1, name2=value2" as a string
-	you = yoUtils();
 	setStr = cell();
 
 	%% CELL input ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
