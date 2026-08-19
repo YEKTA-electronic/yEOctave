@@ -17,7 +17,7 @@ function retStr = build_set(obj)
 
 		for i=1:numfields(obj.setPair)
 			colValue = obj.setPair.(colName{i});
-			colValue = obj.scalar2str(colValue);
+			colValue = you.scalar2str(colValue);
 			setStr(i) = sprintf('%s=%s', colName{i}, colValue);
 		endfor
 
