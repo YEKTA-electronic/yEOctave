@@ -3,7 +3,9 @@ function y = typeConverter (x, outputDataType)
 		case 'string'
 			if isempty(x)
 				y = string();
-			else
+			elseif isnumeric(x)
+				y = num2str(x);
+			elseif ischar(x)
 				y = string(strtrim(x));
 			endif
 
