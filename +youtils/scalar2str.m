@@ -1,5 +1,5 @@
 % convert string/char of any data types for use in QUERY
-function str = scalar2str(obj,x)
+function str = scalar2str(x)
 	if nargin==0 || isempty(x)
 		str = 'NULL';
 
