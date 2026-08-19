@@ -1,5 +1,6 @@
 function retStr = build_set(obj)
 % convert the property to pairs of "name1=value1, name2=value2" as a string
+	you = yoUtils();
 	setStr = cell();
 
 	%% CELL input ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -7,7 +8,7 @@ function retStr = build_set(obj)
 		% each row is a pair of Name-Value in the table
 		for i=1:rows(obj.setPair)
 			colName = obj.setPair{i,1};
-			colValue = obj.scalar2str(obj.setPair{i,2});
+			colValue = you.scalar2str(obj.setPair{i,2});
 			setStr(i) = sprintf('%s=%s', colName, colValue);
 		endfor
 
