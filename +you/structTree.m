@@ -38,7 +38,7 @@ function z = structTree(x,isSub)
 			% make the sub-strcut "name"
 			subName = sprintf("%s%s%s[%s](1/%d)",repmat(sIndent,1,isSub),sRoot,sLeaf,fieldName,numel(fieldValue));
 			% sub-strcut:
-			subLines = structTree(fieldValue,isSub+1);
+			subLines = you.structTree(fieldValue,isSub+1);
 			newLine = sprintf("%s%s\n",subName,subLines);
 
 		else
