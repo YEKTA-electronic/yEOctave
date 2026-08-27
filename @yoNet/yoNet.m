@@ -1,29 +1,22 @@
 classdef yoNet
 
-	properties(SetAccess=private)
-		proxy;
+	properties
+		name = 'newNet'
+		proxy = struct();
+		timeOut = struct();
+		resolver = '';
 	endproperties
 
 	methods
-		function obj = yoNet(protocol,host,port)
-
-			if nargin == 0
-				% DEFAULT = no proxy
-				protocol 	= '';
-				host			= '';
-				port			= int64(0);
+		function obj = yoNet(myName)
+			if nargin >0
+				obj.name = myName;
 			endif
-
-			obj.proxy = setfield(obj.proxy,"protocol",protocol);
-			obj.proxy = setfield(obj.proxy,"host",host);
-			obj.proxy = setfield(obj.proxy,"port",port);
-
-			obj = obj.proxySet ('enable');
-
-			you.introduceObject(obj);
+			obj = obj.setProxy ();
+			obj = obj.setTimeout (0,0);% default OS
+			you.introduceObject (obj);
 
 		endfunction
 	endmethods
-
 endclassdef
 
