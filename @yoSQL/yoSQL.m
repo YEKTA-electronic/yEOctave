@@ -3,8 +3,8 @@ classdef yoSQL
 		properties (SetAccess = private)
 			link;
 			path;
-			tik;
-			mode = false;
+			tik;% connection timer
+			mode = false;% connection status
 		endproperties
 
 		methods
