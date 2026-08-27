@@ -1,13 +1,15 @@
 function y = typeConverter (x, outputDataType)
+
 	switch (outputDataType)
 		case 'string'
 			if isempty(x)
-				y = string();
+				y = '';
 			elseif isnumeric(x)
 				y = num2str(x);
 			elseif ischar(x)
-				y = string(strtrim(x));
+				y = strtrim(x);
 			endif
+			y=string(y);
 
 		case 'int64'
 			if isempty(x)
