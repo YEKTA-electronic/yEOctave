@@ -4,6 +4,7 @@ classdef yoNet
 		name = 'newNet'
 		proxy = struct();
 		timeOut = struct();
+		ping = struct();
 		resolver = '';
 	endproperties
 
