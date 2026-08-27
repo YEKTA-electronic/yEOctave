@@ -4,25 +4,31 @@ function data = request(obj, url, params)
 	%   data = obj.request(url, params)
 
 	if nargin < 3
-			params = struct();
+		fullURL = url;
+	else
+		fullURL = obj.buildUrl(url, params);
 	endif
 
-	fullURL = obj.buildUrl(url, params);
-	cmd = sprintf('curl -s -k %s "%s"', obj.proxy.str, fullURL);
+
+	cmd = sprintf('curl -s -k %s %s %s "%s"',...
+	obj.timeOut.str, obj.proxy.str, obj.resolver, fullURL);
 
 	try
 		tSend = tic();
 		[status, response] = system(cmd);
-		tPing =toc(tSend);
-		disp(['REQUEST | Time: ', num2str(tPing,"%3.1f"), ' Sec'])
-		disp(['REQUEST | Size: ', int2str(sizeof(response)), ' Bytes'])
+		tPing = toc(tSend);
+		tStr 	= sprintf("Time = %3.1f s",tPing);
+		bStr 	= sprintf("Size = %5.2f KB",sizeof(response)/1024);
+		you.logMe({'REQUEST',tStr,bStr})
 	catch ME
+		disp(lasterr)
 		error('REQUEST|cURL|','GET failed for %s\n%s', url, ME.message);
 	end
 
 	% OS/system command/request function check
 	if status != 0
-		errorTxt = sprintf("ERROR | REQUEST | status = #%d & Responsed:\n%s",status,response);
+		errorTxt = sprintf("ERROR | REQUEST | status = #%d & Responsed:\n%s",status)
+		disp(response);
 		error(errorTxt)
 	end
 
