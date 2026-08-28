@@ -15,7 +15,6 @@ classdef yoNet
 			endif
 			obj = obj.setProxy ();
 			obj = obj.setTimeout (0,0);% default OS
-			%you.introduceObject (obj);
 
 		endfunction
 	endmethods
