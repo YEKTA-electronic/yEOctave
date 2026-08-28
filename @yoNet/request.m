@@ -1,27 +1,25 @@
 function data = request(obj, url, params)
-	% REQUEST - Single handler/dispatcher for all public url calls.
-	%   data = obj.request(url)
-	%   data = obj.request(url, params)
+% REQUEST - Single handler/dispatcher for all public url calls.
 
 	if nargin < 3
-		fullURL = url;
-	else
-		fullURL = obj.buildUrl(url, params);
+		params = struct();% no extra parameters
 	endif
 
+	fullURL = buildUrl(url, params);
 	cmd = sprintf('curl -s -k %s %s %s "%s"',...
 	obj.timeOut.str, obj.proxy.str, obj.resolver, fullURL);
 
 	try
 		tSend = tic();
 		[status, response] = system(cmd);
+		% successful cURL
 		tPing = toc(tSend);
-		tStr 	= sprintf("Time = %3.1f s",tPing);
+		tStr 	= sprintf("Time = %1.0f ms",tPing*1000);
 		bStr 	= sprintf("Size = %5.2f KB",sizeof(response)/1024);
 		you.logMe({obj.name,'REQUEST',tStr,bStr})
 	catch ME
 		disp(lasterr)
-		you.logMe({obj.name,'REQUEST','cURL','FAILED'});
+		you.logMe({obj.name,'REQUEST','cURL FAILED'});
 		disp([url;ME.message]);
 		error(lasterr)
 	end
@@ -48,5 +46,31 @@ function data = request(obj, url, params)
     disp('octAster:emptyResponse', 'Empty response from server');
 		error(lasterr)
   endif
+end
+% LOCAL functions ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+function retURL = buildUrl(url, params)
+% BUILDURL - Construct full URL with optional query parameters
+%   params: struct of key/value pairs
+		if nargin<2
+			% no params
+			retURL = url;% nothing to do
 
+		elseif isempty(params) || isempty(fieldnames(params))
+			% no params provided
+			retURL = url;
+
+    else
+			fields 	= fieldnames(params);
+			query 	= cell(1, length(fields));
+
+			for i = 1:length(fields)
+					v = params.(fields{i});
+					if isnumeric(v)
+							v = num2str(v);
+					end
+					query{i} = sprintf('%s=%s', fields{i}, v);
+			end
+
+			retURL = [url,'?', strjoin(query,'&') ];
+    end
 end
